@@ -17,8 +17,14 @@
         <li class="nav-item justify-content-left" >
             <a class="nav-link active" aria-current="page" href="/tag">Tags</a>
         </li>
+
         <li class="nav-item" >
-            <a class="nav-link active" aria-current="page" href="/login"><img src="https://www.flaticon.com/premium-icon/icons/svg/666/666201.svg" height="30px"></a>
+            @auth
+                    <a class="nav-link active" aria-current="page" href="/user"><img src="https://www.flaticon.com/premium-icon/icons/svg/666/666201.svg" height="30px"></a>
+            @endauth
+            @guest
+                    <a class="nav-link active" aria-current="page" href="/login"><img src="https://www.flaticon.com/premium-icon/icons/svg/666/666201.svg" height="30px"></a>
+            @endguest
         </li>
     </ul>
 </div>

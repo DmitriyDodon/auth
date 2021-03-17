@@ -10,7 +10,7 @@ class PageController
 {
     public function loginMethod()
     {
-        return new RedirectResponse('/login');
+        return view('main');
     }
 
 }

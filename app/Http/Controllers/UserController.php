@@ -11,10 +11,13 @@ class UserController
 {
     public function login()
     {
-        if ($user = Auth::user()){
-            return view('User/user-menu' , compact('user'));
-        }
         return view('User/login');
+    }
+
+    public function userShow(){
+        $user = Auth::user();
+
+        return view('User.user-menu' , compact('user'));
     }
 
     public function auth(Request $request)
@@ -29,7 +32,7 @@ class UserController
                 $hash = Hash::make(Auth::user()->getAuthPassword());
                 Auth::user()->update(['password' => $hash]);
             }
-            return new RedirectResponse('/login');
+            return new RedirectResponse('/');
         }
 
         return back()->withErrors([

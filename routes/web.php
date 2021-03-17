@@ -17,11 +17,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/' , [PageController::class , 'loginMethod']);
-Route::get('/login' , [UserController::class , 'login'])->name('login');
+Route::view('/' , 'layout');
+Route::get('/login' , [UserController::class , 'login'])->name('login')->middleware('guest');
 Route::post('/login' , [UserController::class , 'auth'])->name('auth')->middleware('guest');
 
 Route::middleware('auth')->group(function (){
+    Route::get('/user' , [UserController::class , 'userShow']);
     Route::get('/logout' , [UserController::class , 'logout']);
     //Categories
     Route::get('/category', [ CategoryController::class, 'show']);
